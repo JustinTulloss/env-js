@@ -221,9 +221,14 @@ __extend__(Document.prototype,{
         return "[object XMLDocument]";
     },
     get defaultView(){
-        return { getComputedStyle: function(elem){
-            return window.getComputedStyle(elem);
-        }};
+        return {
+            getComputedStyle: function(elem){
+                return window.getComputedStyle(elem);
+            },
+            scrollTo: function() {
+                return window.scrollTo.apply(this, arguments);
+            }
+       };
     },
 });
 
